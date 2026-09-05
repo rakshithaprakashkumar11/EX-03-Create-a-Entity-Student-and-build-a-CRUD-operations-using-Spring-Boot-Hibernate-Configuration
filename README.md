@@ -1,4 +1,4 @@
-# EXp_03_-Entity-Student-and-build-a-CRUD-operations-using-Spring-Boot-Hibernate-Configuration
+# Exp_03_-Entity-Student-and-build-a-CRUD-operations-using-Spring-Boot-Hibernate-Configuration
 
 ## AIM:
 To develop a Spring Boot application that performs CRUD (Create, Read, Update, Delete) operations on a Student entity using Spring Data JPA (Hibernate).
@@ -38,9 +38,11 @@ PUT /students/{id} → Update student
 
 DELETE /students/{id} → Delete student
 
-##PROGRAM CODE
+## PROGRAM CODE
 
 ### pom.xml
+
+```
 <dependencies>
     <!-- Spring Boot Web -->
     <dependency>
@@ -61,15 +63,22 @@ DELETE /students/{id} → Delete student
         <scope>runtime</scope>
     </dependency>
 </dependencies>
- ### application.properties
+```
 
+### application.properties
+
+```
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=update
 spring.h2.console.enabled=true
+```
+
 ### Student.java
+
+```
 package com.example.demo.model;
 import jakarta.persistence.*;
 @Entity
@@ -97,7 +106,11 @@ public class Student {
 
     public void setAge(int age) { this.age = age; }
 }
+```
+
 ### StudentRepository.java
+
+```
 package com.example.demo.repository;
 
 import com.example.demo.model.Student;
@@ -105,7 +118,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 }
+```
+
 ### StudentController.java
+
+```
 package com.example.demo.controller;
 
 import com.example.demo.model.Student;
@@ -153,7 +170,11 @@ public class StudentController {
         return "Student with ID " + id + " deleted successfully!";
     }
 }
+```
+
 ### DemoApplication.java
+
+```
 package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
@@ -165,3 +186,19 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 }
+```
+
+### Output:
+
+#### Get All Students:
+
+<img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/c7ebad5a-1a4f-4edc-b391-29dd5a208014" />
+
+#### Update Students By ID:
+
+<img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/dd724ead-2686-49d7-8808-12dcad059065" />
+
+#### Delete Students By ID:
+
+<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/a793a9ee-9c3b-4a02-a5dd-c5b3ac1c03d2" />
+
